@@ -9,7 +9,7 @@ int main(int argc, char **argv) {
 	printf("\n| Running program with %d parameters ... |\n\n", argc);
 
 	sqlite3 *db = NULL;
-	char *zErrMsg = 0;
+	char *zErrMsg = NULL;
 	int rc = 0;
 
 	//rc = sqlite3_open_v2(DATABASE, &db, SQLITE_OPEN_READWRITE, ""); //https://sqlite.org/c3ref/open.html
@@ -63,9 +63,11 @@ int main(int argc, char **argv) {
 		endloop:
 			break;
 	}
-
+	sqlite3_finalize(statement);
+	statement = NULL;
 
 	sqlite3_close(db);
+	db = NULL;
 
 	printf("\n| ... ending program. |\n\n");
 	return 0;
