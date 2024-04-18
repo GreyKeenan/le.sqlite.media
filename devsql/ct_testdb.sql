@@ -1,0 +1,2 @@
+
+CREATE TABLE testdb (id INTEGER PRIMARY KEY, name VARCHAR NOT NULL, data INT);
